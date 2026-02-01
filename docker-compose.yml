@@ -1,0 +1,18 @@
+services:
+  uptime-kuma-push:
+    build: .
+    # Or use pre-built image: image: ghcr.io/akhilrex/uptime-kuma-push-agent:latest
+    container_name: uptime-kuma-push
+    restart: unless-stopped
+    environment:
+      # Required: Your Uptime Kuma Push URL
+      - PUSH_URL=https://uptime.example.com/api/push/YOUR_TOKEN_HERE
+      
+      # Optional: Interval between heartbeats in seconds (default: 60)
+      - PUSH_INTERVAL=60
+      
+      # Optional: Status message to send (default: OK)
+      - PUSH_MSG=OK
+      
+      # Optional: Ping/latency value in ms to report (default: empty)
+      # - PUSH_PING=10
